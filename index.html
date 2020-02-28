@@ -8,10 +8,61 @@
 </head>
 <body>
 <!-- partial:index.partial.html -->
-<div class="button"><span><a href="https://www.xwocao.com">https://xwocao.com</a></span></div>
-<div class="button"><span><a href="https://www.xwocao.com">我营养跟得上！!</a></span></div>
-<div class="button"><span><a href="https://www.xwocao.com">点击上车！！！-></a></span></div>
-<!-- partial -->
+
+	 
+<div class="button copy-pp" id="copy-pp"><span id="#content">https://xwocao.com</span></div>
+<div><button type="button" class="button copy-btn" id="copy-btn" onclick="jsCopy(this)"><span>点击复制链接</span></button></div>
+<div><button type="button" class="button copy-btn" id="copy-btn" onclick="jsCopy(this)"><span>到游览器地址粘贴即可</span></button></div>
+<div><button type="button" class="button copy-btn" id="copy-btn" onclick="jsCopy(this)"><span>我营养跟得上，上车！！</span></button></div>
+<textarea class="copy-text" id="copy-text" value="" readonly="readonly"></textarea>
+
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+  
+  
+  <script>
+  	function jsCopy(obj) {
+  		var u = navigator.userAgent;
+  		//苹果
+  		if (u.match(/(iPhone|iPod|iPad);?/i)) {
+  			var copyDOM = document.getElementById("copy-pp"); //要复制文字的节点
+  			var range = document.createRange();
+  			// 选中需要复制的节点
+  			range.selectNode(copyDOM);
+  			// 执行选中元素
+  			window.getSelection().addRange(range);
+  			// 执行 copy 操作
+  			var successful = document.execCommand('copy');
+  			try {
+  				var msg = successful ? '成功' : '失败';
+  				console.log(msg);
+  			} catch (err) {
+  				console.log(err);
+  			}
+  			// 移除选中的元素
+  			window.getSelection().removeAllRanges();
+  			obj.innerHTML = '<h1>已复制！</h1>';
+  		}
+  
+  		// 安卓
+  		if (u.indexOf('Android') > -1) {
+  			var $copyText = document.getElementById("copy-text"),
+  				$copyPP = document.getElementById("copy-pp");
+  			$copyText.innerHTML = $copyPP.innerHTML.replace(/<[^>]+>/g, "");
+  			$copyText.select(); // 选择对象
+  			document.execCommand("Copy"); // 执行浏览器复制命令
+  			obj.innerHTML = '<h1>已复制！</h1>';
+  		}
+  		// 安卓系统的UC浏览器
+  		if (u.indexOf('Android') > -1 && u.indexOf('UCBrowser') > -1) {
+  			obj.innerHTML = '点击复制链接';
+  			alert('复制无效，请长按内容手动复制！');
+  		}
+  	}
+  </script>
 </body>
 </html>
+
+
+   
+
+
