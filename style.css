@@ -1,8 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
-a:link { text-decoration: none;color: rgb(228, 28, 95)}
-a:active { text-decoration:blink}
-a:hover { text-decoration:underline;color: rgb(13, 228, 13)}
-a:visited { text-decoration: none;color: rgb(31, 238, 124)}
+.copy-text{
+	opacity: 0;
+}
 
 body {
   width: 100vw;
